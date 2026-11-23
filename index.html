@@ -34,4 +34,26 @@
       color: #e53935;
       animation: blink 1s infinite;
     }
-    @ke
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+  <div class="logo">💻</div>
+  <h1><span class="clignote">Bienvenue</span> dans<br>Espaces Tech Daïra</h1>
+  <p id="salut"></p>
+
+  <script>
+    const tg = window.Telegram.WebApp;
+    tg.ready();
+    tg.expand();
+
+    const user = tg.initDataUnsafe.user;
+    if (user) {
+      document.getElementById("salut").innerText = "Salut " + user.first_name + " 👋";
+    }
+  </script>
+</body>
+</html>
