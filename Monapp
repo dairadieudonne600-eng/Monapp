@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="https://telegram.org/js/telegram-web-app.js"></script>
+</head>
+<body>
+  <h2 id="salut">Chargement…</h2>
+  <button id="btn">Envoyer</button>
+
+  <script>
+    const tg = window.Telegram.WebApp;
+    tg.ready();
+    tg.expand();
+
+    const user = tg.initDataUnsafe.user;
+    document.getElementById("salut").innerText =
+      "Salut " + (user ? user.first_name : "inconnu") + " !";
+
+    document.getElementById("btn").onclick = () => {
+      tg.sendData("Bonjour depuis la mini app");
+    };
+  </script>
+</body>
+</html>
